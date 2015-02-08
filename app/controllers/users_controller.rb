@@ -7,13 +7,13 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to users_path
+      redirect_to profile_path
     end
   end
 
   def upload
     current_user.update(image: params[:user][:image])
-    redirect_to users_path
+    redirect_to profile_path
   end
 
   private

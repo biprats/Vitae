@@ -1,8 +1,12 @@
 <%= image_tag current_user.image %>
 <%= form_for current_user, url: upload_path, method: :post do |f| %>
-  <p>
+  <h6>
     Chooose a New Image
-  </p>
+  </h6>
   <%= f.file_field :image %>
   <%= f.submit "Upload" %>
+  <h6>
+    Download Image
+  </h6>
+  <%= link_to current_user.watermark_image, current_user.watermark_image %>
 <% end %> 
