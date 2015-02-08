@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Vitae</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+  <%= render "layouts/head" %>
+  <body>
+  <%= render "layouts/header" %>
+      <div class="body-out">
+        <div class="body-in">
+          <div class="container-fluid <%= action_name %>">
+            <%= yield %>
+          </div>
+          <%= render "layouts/footer" %>
+        </div>
+      </div>
+  </body>
 </html>

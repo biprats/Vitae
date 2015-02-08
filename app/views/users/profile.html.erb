@@ -1,0 +1,8 @@
+<%= image_tag current_user.image %>
+<%= form_for current_user, url: upload_path, method: :post do |f| %>
+  <p>
+    Chooose a New Image
+  </p>
+  <%= f.file_field :image %>
+  <%= f.submit "Upload" %>
+<% end %> 

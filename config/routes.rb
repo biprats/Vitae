@@ -2,7 +2,9 @@ Vitae::Application.routes.draw do
   root "users#index"
   resources :users
   post :upload, to: "users#upload"
+  get :sessions, to: "sessions#index"
   put :sessions, to: "sessions#create"
+  get :profile, to: "users#profile"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
