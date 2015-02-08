@@ -1,0 +1,25 @@
+<% @users.each do |user| %>
+  <%= user.email %>
+<% end %>
+
+<% if current_user %>
+  <%= image_tag current_user.image %>
+  <%= form_for @user, url: upload_path, method: :post do |f| %>
+    <%= f.file_field :image %>
+    <%= f.submit "Upload" %>
+  <% end %> 
+<% else %>
+  <%= form_for @user do |f| %>
+    <%= f.email_field :email, placeholder: "Email" %>
+    <%= f.text_field :first_name, placeholder: "First Name" %>
+    <%= f.text_field :last_name, placeholder: "Last Name" %>
+    <%= f.password_field :password, placeholder: "Password" %>
+    <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %>
+    <%= f.submit "Create User" %>
+  <% end %>
+  <%= form_for @user, url: sessions_path, method: :put do |f| %>
+    <%= f.email_field :email, placeholder: "Email" %>
+    <%= f.password_field :password, placeholder: "Password" %>
+    <%= f.submit "Sign In" %>
+  <% end %>
+<% end %>
