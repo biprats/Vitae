@@ -15,12 +15,12 @@ class UsersController < ApplicationController
     AWS.config(
       access_key_id: ENV["AWS_PUBLIC"],
       secret_access_key: ENV["AWS_SECRET"],
-      region: "us-west-2"
+      region: "us-east-1"
     )
     s3 = AWS::S3.new
-    image = s3.buckets["vitae"].objects[current_user.id].write(file: params[:user][:image])
+    s3.buckets["vitae"].objects["users/#{current_user.id}/original.jpg"].write(file: params[:user][:image])
 
-    current_user.update(image: image)
+    current_user.update(image: "https://s3.amazonaws.com/vitae/users/#{current_user.id}/original.jpg")
     redirect_to profile_path
   end
 
