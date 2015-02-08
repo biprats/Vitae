@@ -12,7 +12,15 @@ class UsersController < ApplicationController
   end
 
   def upload
-    current_user.update(image: params[:user][:image])
+    AWS.config(
+      access_key_id: ENV["AWS_PUBLIC"],
+      secret_access_key: ENV["AWS_SECRET"],
+      region: "us-west-2"
+    )
+    s3 = AWS::S3.new
+    image = s3.buckets["vitae"].objects[current_user.id].write(file: params[:user][:image])
+
+    current_user.update(image: image)
     redirect_to profile_path
   end
 

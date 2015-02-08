@@ -28,11 +28,7 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-gem 'carrierwave-aws'
-
-gem 'carrierwave'
-
-gem 'rmagick'
+gem 'aws-sdk-v1'
 
 gem 'bcrypt-ruby', '~> 3.0.0'
 

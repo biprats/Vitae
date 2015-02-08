@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20150208054407) do
     t.string   "link_id"
     t.string   "payoff_id"
     t.string   "trigger_id"
+    t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

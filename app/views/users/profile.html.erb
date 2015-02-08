@@ -1,12 +1,26 @@
-<%= image_tag current_user.image %>
-<%= form_for current_user, url: upload_path, method: :post do |f| %>
-  <h6>
-    Chooose a New Image
-  </h6>
-  <%= f.file_field :image %>
-  <%= f.submit "Upload" %>
-  <h6>
-    Download Image
-  </h6>
-  <%= link_to current_user.watermark_image, current_user.watermark_image %>
-<% end %> 
+<div class="row">
+  <div class="col-md-3">
+    <%= form_for current_user, url: upload_path, method: :post, class: "form-horizontal" do |f| %>
+      <h6>
+        Chooose a New Image
+      </h6>
+      <div class="form-group">
+        <%= f.file_field :image %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "Upload", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-3">
+    <%= image_tag current_user.image, class: "img-responsive" %>
+  </div>
+  <% if current_user.watermark %>
+    <div class="col-md-3">
+      <h6>
+        Headshot
+      </h6>
+      <%= link_to "Download", current_user.watermark.image.url, class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

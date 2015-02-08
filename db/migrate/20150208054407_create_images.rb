@@ -5,6 +5,7 @@ class CreateImages < ActiveRecord::Migration
       t.string :link_id
       t.string :payoff_id
       t.string :trigger_id
+      t.string :image
 
       t.timestamps
     end

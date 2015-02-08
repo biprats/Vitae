@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  mount_uploader :image, ImageUploader
   has_one :watermark
   has_secure_password
   validates_uniqueness_of :email
@@ -10,21 +9,12 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
-  def watermark_url
-    "https://s3.amazonaws.com/vitae/users/#{id}/#{image.filename}"
-  end
-
-  def watermark_image
-    lp = LivePaper.auth({id: ENV["LINK_PUBLIC"], secret: ENV["LINK_SECRET"]})
-    t = LivePaper::WmTrigger.get(watermark.trigger_id)
-    t.wm_url
-  end
-
   private
   def update_watermark
     if self.image && self.image_changed?
+      binding.pry
       lp = LivePaper.auth({id: ENV["LINK_PUBLIC"], secret: ENV["LINK_SECRET"]})
-      i = LivePaper::Image.upload(self.watermark_url)
+      i = LivePaper::Image.upload(self.image.url)
       if self.watermark
         t = LivePaper::WmTrigger.get(watermark.trigger_id)
         t.watermark[:imageURL] = i
