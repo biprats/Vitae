@@ -1,9 +1,9 @@
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-md-4">
     <%= form_for current_user, url: upload_path, method: :post, class: "form-horizontal" do |f| %>
-      <h6>
+      <h4>
         Chooose a New Image
-      </h6>
+      </h4>
       <div class="form-group">
         <%= f.file_field :image %>
       </div>
@@ -12,15 +12,21 @@
       </div>
     <% end %>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-4">
     <%= image_tag current_user.image, class: "img-responsive" %>
   </div>
-  <% if current_user.watermark %>
-    <div class="col-md-3">
-      <h6>
-        Headshot
-      </h6>
-      <%= link_to "Download", current_user.watermark.image.url, class: "btn btn-primary" %>
-    </div>
-  <% end %>
+  <div class="col-md-4">
+    <%= form_for current_user, html:{class:"form-horizontal"} do |f| %>
+      <h4>
+        Add Resume
+      </h4>
+      <div class="form-group">
+        <%= f.text_area :resume, rows: 12, style: "overflow: auto", class: "form-control" %>
+      </div> 
+      <div class="form-group">
+        <%= f.submit "Submit", class: "btn btn-primary" %>
+        <%= link_to "View", user_path(current_user.id), class: "btn btn-success pull-right" %>
+      </div>
+    <% end %>
+  </div>
 </div>

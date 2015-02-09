@@ -11,6 +11,24 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    current_user.update(resume: params[:user][:resume])
+    redirect_to profile_path
+  end
+
+  def show
+    @user = User.find_by(id: params[:id])
+    unless @user
+      redirect_to root_path
+    end
+  end
+
+  def profile
+    unless current_user
+      redirect_to root_path
+    end
+  end
+  
   def upload
     AWS.config(
       access_key_id: ENV["AWS_PUBLIC"],

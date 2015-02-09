@@ -11,10 +11,12 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><%= link_to "Sign In/Up", sessions_path %></li>
-        <li><%= link_to "Profile", profile_path %></li>
-        <li><%= link_to "Applicants", "" %></li>
-        <li><%= link_to "Employers", "" %></li>
+        <% if current_user %>
+          <li><%= link_to "Profile", profile_path %></li>
+          <li><%= link_to "Sign Out", sessions_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Sign In/Up", sessions_path %></li>
+        <% end %>    
       </ul>
     </div>
   </div>

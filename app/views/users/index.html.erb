@@ -1,3 +1,5 @@
+<h1 class="text-center">Vitae</h1>
+<h4 class="text-center">Where Progress Meets Procedure</h4>
 <% @users.each do |user| %>
-  <%= user.email %>
+  <%= image_tag user.image, class: "img-rounded" %>
 <% end %>

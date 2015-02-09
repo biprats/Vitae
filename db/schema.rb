@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150208054407) do
+ActiveRecord::Schema.define(version: 20150208233024) do
 
   create_table "users", force: true do |t|
     t.string   "email"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20150208054407) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "resume"
   end
 
   create_table "watermarks", force: true do |t|
@@ -28,7 +29,6 @@ ActiveRecord::Schema.define(version: 20150208054407) do
     t.string   "link_id"
     t.string   "payoff_id"
     t.string   "trigger_id"
-    t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

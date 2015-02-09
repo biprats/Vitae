@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-md-6">
+    <h3><%= @user.name %></h3>
+    <h4><%= @user.email %></h4>
+    <%= image_tag @user.image, class: "img-rounded" %>
+  </div>
+  <div class="col-md-6">
+    <h3 class="text-center">Resume</h3>
+    <p><%= @user.resume %></p>
+  </div>
+</div>

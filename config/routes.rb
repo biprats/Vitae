@@ -4,6 +4,7 @@ Vitae::Application.routes.draw do
   post :upload, to: "users#upload"
   get :sessions, to: "sessions#index"
   put :sessions, to: "sessions#create"
+  delete :sessions, to: "sessions#destroy"
   get :profile, to: "users#profile"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
